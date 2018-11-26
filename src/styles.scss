@@ -22,7 +22,36 @@ body {
   color: white;
 }
 
+.mat-primary-reverse {
+  background-color: white !important;
+  color: var(--primary);
+}
+
+.mat-secondary-reverse {
+  background-color: white !important;
+  color: var(--secondary);
+}
+
+.mat-default {
+  background-color: white !important;
+  color: black;
+}
+
 .mat-toolbar {
   color: white;
   background-color: var(--primary) !important;
+}
+
+.mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--primary) !important;
+}
+
+.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--primary) !important;
+}
+
+.mat-input-element {
+  caret-color: var(--primary) !important;
 }
