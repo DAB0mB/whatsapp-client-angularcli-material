@@ -9,7 +9,7 @@ import {GetUsers} from '../../../../graphql';
         <input matInput placeholder="Group name" [(ngModel)]="groupName">
       </mat-form-field>
     </div>
-    <button [disabled]="!groupName" class="new-group" mat-fab color="primary" (click)="emitGroupDetails()">
+    <button [disabled]="!groupName" class="new-group" mat-fab color="secondary" (click)="emitGroupDetails()">
       <mat-icon aria-label="Icon-button with a + icon">arrow_forward</mat-icon>
     </button>
     <div>Members</div>

@@ -5,12 +5,15 @@
 }
 
 button {
+  background-color: inherit !important;
+  outline: none !important;
   margin: 10px;
   height: 50px;
   padding: 1px 6px;
   line-height: 50px;
   border: none;
   margin: 0;
+  position: relative;
 
   img {
     float: left;
@@ -28,5 +31,13 @@ button {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-weight: bold;
     font-size: 16px;
+  }
+
+  mat-icon {
+    color: var(--primary) !important;
+    opacity: .7;
+    position: absolute;
+    left: 40px;
+    top: 30px;
   }
 }
