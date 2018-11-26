@@ -116,7 +116,7 @@ export class LoginComponent {
   }
 
   signUp() {
-    const {username, newPassword: password, name} = this.signInForm.value;
+    const {username, newPassword: password, name} = this.signUpForm.value;
     const auth = `Basic ${btoa(`${username}:${password}`)}`;
     this.http.post('http://localhost:3000/signup', {
       name,

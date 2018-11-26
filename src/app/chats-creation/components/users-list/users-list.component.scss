@@ -2,7 +2,7 @@
   display: block;
 }
 
-:host ::ng-deep mat-list-item:first-child div:first-child {
+:host ::ng-deep mat-list:first-child > mat-list-item div:first-child {
   padding: 0 !important;
   margin: 5px;
   margin-top: 20px;
