@@ -9,63 +9,77 @@ import {LoginService} from '../services/login.service';
 @Component({
   selector: 'app-login',
   template: `
-    <form (ngSubmit)="signIn()" [formGroup]="signInForm" novalidate>
-      <fieldset fxLayout="column" fxLayoutGap="17px">
-        <legend>Sign in</legend>
-        <div>
-          <label>Username</label>
-          <input formControlName="username" autocomplete="username" type="text">
-        </div>
+    <img src="assets/whatsapp-icon.png" />
+    <h2>WhatsApp Clone</h2>
+
+    <form *ngIf="signingIn" (ngSubmit)="signIn()" [formGroup]="signInForm" novalidate>
+      <legend>Sign in</legend>
+
+      <div style="width: 100%">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput autocomplete="username" formControlName="username" type="text" placeholder="Enter your username" />
+        </mat-form-field>
+
         <div class="error" *ngIf="signInForm.get('username').hasError('required') && signInForm.get('username').touched">
           Username is required
         </div>
 
-        <div>
-          <label>Password</label>
-          <input formControlName="password" autocomplete="current-password" type="password">
-        </div>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput autocomplete="password" formControlName="password" type="password" placeholder="Enter your password" />
+        </mat-form-field>
+
         <div class="error" *ngIf="signInForm.get('password').hasError('required') && signInForm.get('password').touched">
           Password is required
         </div>
+      </div>
 
-        <button type="submit" [disabled]="signInForm.invalid">Sign in</button>
-      </fieldset>
+      <button mat-button type="submit" color="secondary" [disabled]="signInForm.invalid">Sign in</button>
+      <span class="alternative">Don't have an account yet? <a (click)="signingIn = false">Sign up!</a></span>
     </form>
 
-    <form (ngSubmit)="signUp()" [formGroup]="signUpForm" novalidate>
-      <fieldset fxLayout="column" fxLayoutGap="17px">
-        <legend>Sign up</legend>
-        <div>
-          <label>Name</label>
-          <input formControlName="name" type="text">
-        </div>
+    <form *ngIf="!signingIn" (ngSubmit)="signUp()" [formGroup]="signUpForm" novalidate>
+      <legend>Sign up</legend>
 
-        <div>
-          <label>Username</label>
-          <input formControlName="username" autocomplete="username" type="text">
-        </div>
+      <div style="float: left; width: calc(50% - 10px); padding-right: 10px;">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput autocomplete="name" formControlName="username" type="text" placeholder="Enter your name" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput autocomplete="username" formControlName="username" type="text" placeholder="Enter your username" />
+        </mat-form-field>
+
         <div class="error" *ngIf="signUpForm.get('username').hasError('required') && signUpForm.get('username').touched">
           Username is required
         </div>
+      </div>
 
-        <div>
-          <label>Password</label>
-          <input formControlName="newPassword" autocomplete="new-password" type="password">
-        </div>
+      <div style="float: right; width: calc(50% - 10px); padding-left: 10px;">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput autocomplete="password" formControlName="newPassword" type="password" placeholder="Enter your password" />
+        </mat-form-field>
+
         <div class="error" *ngIf="signUpForm.get('newPassword').hasError('required') && signUpForm.get('newPassword').touched">
           Password is required
         </div>
 
-        <div>
-          <label>Password</label>
-          <input formControlName="confirmPassword" type="password">
-        </div>
+        <mat-form-field>
+          <mat-label>Confirm Password</mat-label>
+          <input matInput autocomplete="password" formControlName="confirmPassword" type="password" placeholder="Confirm your password" />
+        </mat-form-field>
+
         <div class="error" *ngIf="signUpForm.get('confirmPassword').hasError('required') && signUpForm.get('confirmPassword').touched">
           Passwords must match
         </div>
+      </div>
 
-        <button type="submit" [disabled]="signUpForm.invalid">Sign up</button>
-      </fieldset>
+      <button mat-button type="submit" color="secondary" [disabled]="signUpForm.invalid">Sign up</button>
+      <span class="alternative">Already have an account? <a (click)="signingIn = true">Sign in!</a></span>
     </form>
   `,
   styleUrls: ['./login.component.scss'],
@@ -95,6 +109,8 @@ export class LoginComponent {
       // matchOtherValidator('newPassword'),
     ]],
   });
+
+  private signingIn = true
 
   constructor(private http: HttpClient,
               private fb: FormBuilder,

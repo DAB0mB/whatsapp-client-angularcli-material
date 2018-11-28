@@ -10,6 +10,7 @@
 
 body {
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mat-primary {
@@ -22,18 +23,18 @@ body {
   color: white;
 }
 
-.mat-primary-reverse {
+.mat-primary-negative {
   background-color: white !important;
   color: var(--primary);
 }
 
-.mat-secondary-reverse {
+.mat-secondary-negative {
   background-color: white !important;
   color: var(--secondary);
 }
 
 .mat-default {
-  background-color: white !important;
+  background-color: transparent !important;
   color: black;
 }
 
@@ -43,12 +44,10 @@ body {
 }
 
 .mat-focused .mat-form-field-label {
-  /*change color of label*/
   color: var(--primary) !important;
 }
 
 .mat-form-field-ripple {
-  /*change color of underline when focused*/
   background-color: var(--primary) !important;
 }
 
