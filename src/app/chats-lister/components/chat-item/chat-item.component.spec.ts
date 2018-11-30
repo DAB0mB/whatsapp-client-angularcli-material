@@ -92,16 +92,11 @@ describe('ChatItemComponent', () => {
   });
 
   it('should contain the chat name', () => {
-    expect(el.query(By.css('.chat-recipient > div:first-child')).nativeElement.textContent).toContain(chat.name);
+    expect(el.query(By.css('.chat-name')).nativeElement.textContent).toContain(chat.name);
   });
 
-  it('should contain the first couple of characters of the message content', () => {
-    expect(el.query(By.css('.chat-content')).nativeElement.textContent)
-      .toContain(chat.messages[chat.messages.length - 1].content.slice(0, 20));
-  });
-
-  it('should not contain the latest characters of the message content', () => {
-    expect(el.query(By.css('.chat-content')).nativeElement.textContent)
-      .not.toContain(chat.messages[chat.messages.length - 1].content.slice(20));
+  it('should contain the chat last message', () => {
+    expect(el.query(By.css('.chat-last-message')).nativeElement.textContent)
+      .toContain(chat.messages[chat.messages.length - 1].content);
   });
 });
